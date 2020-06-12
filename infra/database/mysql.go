@@ -7,7 +7,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func Open() {
+func Connect() *sql.DB {
 	db, err := sql.Open("mysql", "root:dev@tcp(mysql:3306)/renegades")
 	if err != nil {
 		panic(err)
@@ -17,5 +17,7 @@ func Open() {
 		panic(err)
 	}
 
-	fmt.Println("BANCO CONNECTED")
+	fmt.Println("DB CONNECTED")
+
+	return db
 }
