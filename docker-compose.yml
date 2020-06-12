@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  go-access-parser-log:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+  #  ports:
+  #    - "3001:3001"
+    command: fresh
+    volumes:
+      - .:/app
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "dev"
+      MYSQL_DATABASE: "renegades"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql:rw
