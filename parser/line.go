@@ -36,6 +36,9 @@ func (l line) ip() IP {
 }
 
 func (l line) port() (Port, error) {
+	if l.value[portKey] == "" {
+		return 0, nil
+	}
 	port, err := strconv.ParseUint(l.value[portKey], 10, 32)
 	if err != nil {
 		return Port(0), errors.Wrap(err, "error ao converter porta")

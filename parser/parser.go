@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-const parseLogRegex = `(?m)^(?P<ip>\S*):(?P<port>\S*).*\[(?P<date>.*)\]\s"(?P<method>\S*)\s(?P<resource>\S*)\s([^"]*)"\s(?P<status>\S*)\s(?P<bytes>\S*)\s"([^"]*)"\s"([^"]*)"`
+const parseLogRegex = `(?m)^(?P<ip>\S*):?(?P<port>\S*).*\[(?P<date>.*)\]\s"(?P<method>\S*)\s(?P<resource>\S*)\s([^"]*)"\s(?P<status>\S*)\s(?P<bytes>\S*)\s"([^"]*)"\s"([^"]*)"`
 
 type (
 	IP             string
