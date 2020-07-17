@@ -7,8 +7,9 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func Connect() *sql.DB {
-	db, err := sql.Open("mysql", "root:dev@tcp(mysql:3306)/renegades")
+func NewMySQLConnection(c *Config) *sql.DB {
+	fmt.Printf("%s:%s@tcp(%s:%s)/%s", c.user, c.password, c.host, c.port, c.database)
+	db, err := sql.Open(c.host, fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", c.user, c.password, c.host, c.port, c.database))
 	if err != nil {
 		panic(err)
 	}
@@ -17,7 +18,7 @@ func Connect() *sql.DB {
 		panic(err)
 	}
 
-	fmt.Println("DB CONNECTED")
+	fmt.Println("Database CONNECTED")
 
 	return db
 }

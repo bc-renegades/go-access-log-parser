@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+/* TODO criar testes */
 func TestParse(t *testing.T) {
 
 	dateTest, _ := time.Parse("02/Jan/2006:15:04:05 -0700", "12/Jun/2020:04:23:50 -0300")

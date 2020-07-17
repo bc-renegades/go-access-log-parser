@@ -51,9 +51,9 @@ func NewLog(
 
 type Logs []Log
 
-func Parse(file io.Reader) (Logs, error) {
+func Parse(reader io.Reader) (Logs, error) {
 	var (
-		scanner = bufio.NewScanner(file)
+		scanner = bufio.NewScanner(reader)
 		logs    = Logs{}
 	)
 

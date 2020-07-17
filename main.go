@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	file, err := os.Open("./logs/api.boacompra.com_access_sample.log")
+	file, err := os.Open(os.Getenv("FILE_PATH"))
 	if err != nil {
 		panic(err)
 	}
@@ -21,7 +21,9 @@ func main() {
 		fmt.Println(err)
 	}
 
-	db := database.Connect()
+	c := database.NewConfigEnv()
+
+	db := database.NewMySQLConnection(c)
 	for _, log := range logs {
 		db.Exec("INSERT INTO logs VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
 			uuid.New(),

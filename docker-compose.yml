@@ -9,6 +9,8 @@ services:
   #  ports:
   #    - "3001:3001"
     command: fresh
+    env_file:
+      - .env
     volumes:
       - .:/app
     depends_on:
